@@ -5,16 +5,19 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.microservice.customer.CustomerRequest;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
-	@GetMapping("/message")
-	public String test(HttpServletRequest request, HttpServletResponse response) {
+	@PostMapping("/message")
+	public String test(HttpServletRequest request, HttpServletResponse response, @RequestBody CustomerRequest helloRequest) {
 		Enumeration<String> headers = request.getHeaderNames();
 		while(headers.hasMoreElements()) {
 			String headerKey = headers.nextElement();
